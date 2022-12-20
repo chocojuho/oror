@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+         :root {
+            --bkg: #232946;
+            --dark: #121629;
+            --purple: #b8c1ec;
+            --pink: #eebbc3;
+            --white: #fffffe;
+            --white2: #f5f5f5;
+            --red: #6b3131;
+            --gray: #707070;
+        }
+        
+        body {
+            background-color: var(--white);
+            place-items: center;
+            font-size: 2rem;
+            height: 100%;
+        }
+        
+        body {
+            background-size: cover;
+            display: block;
+            align-items: center;
+            background-repeat: no-repeat;
+        }
+        
+        footer {
+            width: 100%;
+            height: 10%;
+        }
+        
+        footer>div {
+            width: 100%;
+            height: 90px;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            /* background-color: rgba(255, 255, 255, 0.15);*/
+            background-color: #f5f5f589;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            border: 1px solid #707070;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navigation ul {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+        
+        .navigation ul li {
+            list-style: none;
+            position: relative;
+            width: 25%;
+            height: 90px;
+            z-index: 2;
+        }
+        
+        .navigation ul li a {
+            position: relative;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+        }
+        
+        .navigation ul li a span p {
+            position: relative;
+            display: block;
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 30px;
+            text-align: left;
+            color: #6b3131;
+            width: 100%;
+            height: 90%;
+            text-align: center;
+            line-height: 90%;
+            transition-delay: 0s;
+            border-radius: 25%;
+        }
+        
+        .navigation ul li.active a span p {
+            transform: translateY(-25px);
+            transition-delay: 0s;
+            color: #232946;
+        }
+        
+        .navigation ul li.active a span p::before {
+            transition-delay: 0.25s;
+            opacity: 0.5;
+        }
+        
+        .navigation ul li a span p::before {
+            content: '';
+            position: absolute;
+            transition: 0.5s;
+            transition-delay: 0s;
+            opacity: 0;
+        }
+        
+        .indicator {
+            position: absolute;
+            top: -20px;
+            width: 25%;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            background-color: rgba(195, 192, 192, 0.827);
+            border: 1px solid #707070;
+            box-shadow: 5px 5px 30px rgb(161, 161, 161);
+            height: 90px;
+            z-index: 1;
+            transition: 0.5;
+        }
+        
+        .navigation ul li:nth-child(1).active~indicator {
+            transform: translateX(calc(100%*0));
+        }
+        
+        .navigation ul li:nth-child(2).active~.indicator {
+            transform: translateX(calc(100%*1));
+        }
+        
+        .navigation ul li:nth-child(3).active~.indicator {
+            transform: translateX(calc(100%*2));
+        }
+        
+        .navigation ul li:nth-child(4).active~.indicator {
+            transform: translateX(calc(100%*3));
+        }
+        
+        section {
+            display: flex;
+            height: 80vh;
+            overflow: hidden;
+            background: transparent;
+            margin: 20px 20px 20px 20px;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        section>div {
+            margin: 15px;
+        }
+        
+        .first {
+            width: 45%;
+            height: 90%;
+            border-radius: 48px;
+            background: #fff;
+            border: 1px solid #707070;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.16);
+        }
+        
+        .second {
+            width: 45%;
+            height: 90%;
+            border-radius: 48px;
+            background: #fff;
+            border: 1px solid #707070;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.16);
+        }
+        
+        .all {
+            display: flex;
+            width: 90%;
+            height: 68px;
+            border-radius: 17px;
+            background: #d8d8d8;
+            border: 1px solid #121629;
+            align-items: center;
+            justify-content: space-around;
+            text-decoration: none;
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 30px;
+            text-align: left;
+            color: #fff;
+            margin: 5px;
+        }
+        
+        .container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        hr {
+            height: 12px;
+            border: 0;
+            box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+<body background="https://images.pexels.com/photos/380330/pexels-photo-380330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+    <section>
+        <div class="first">
+            <h1>PS글</h1>
+            <div class="container">
+                <a class="all" href="">전체보기</a>
+            </div>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="/findcon/" class="all">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="second">
+            <h1>대회 일정</h1>
+            <div class="container">
+                <a class="all" href="">전체보기</a>
+            </div>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="/findcon/" class="text-decoration-none">
+                        <h6><strong class="text-info"></strong>
+                            <span class="badge bg-secondary">개념</span></h6>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <div class="navigation">
+            <ul>
+                <li class="list">
+                    <a href="/">
+                        <span class="icon">
+                            <p>메인페이지</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/graph">
+                        <span class="icon">
+                            <p>그래프 제작</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/introduce">
+                        <span class="icon">
+                            <p>개인 소개</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="/ps">
+                        <span class="icon">
+                            <p>PS</p>
+                        </span>
+                    </a>
+                </li>
+                <div class="indicator">
+                </div>
+            </ul>
+        </div>
+    </footer>
+
+
+</body>
+<script>
+    const list = document.querySelectorAll('.list');
+    list.forEach((item) =>
+        item.addEventListener('mouseover', activeLink))
+
+    function activeLink() {
+        list.forEach((item) =>
+            item.classList.remove('active'));
+        this.classList.add('active');
+    }
+</script>
+
+</html>

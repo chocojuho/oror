@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+         :root {
+            --bkg: #232946;
+            --dark: #121629;
+            --purple: #b8c1ec;
+            --pink: #eebbc3;
+            --white: #fffffe;
+            --white2: #f5f5f5;
+            --red: #6b3131;
+            --gray: #707070;
+        }
+        
+        body {
+            background-color: var(--white);
+            place-items: center;
+            min-height: 100vh;
+            font-size: 2rem;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4rem;
+            margin: 1rem;
+        }
+        
+        .clock-wrapper {
+            display: grid;
+            place-items: center;
+            gap: 2rem;
+            /*color: var(--white);*/
+        }
+        
+        .clockface {
+            filter: drop-shadow(2px 10px 10px var(--gray));
+        }
+        
+        .ring--seconds {
+            fill: var(--white2);
+            stroke: var(--gray);
+            stroke-width: 5;
+            stroke-dasharray: .1 .9;
+            stroke-dashoffset: .05;
+        }
+        
+        .ring--center {
+            fill: var(--pink);
+            stroke: var(--white);
+            stroke-width: 2.5;
+        }
+        
+        .ring--hours {
+            fill: transparent;
+            stroke: var(--purple);
+            stroke-width: 15;
+            stroke-dasharray: .05 .95;
+            stroke-dashoffset: .025;
+        }
+        
+        .hand {
+            stroke: var(--pink);
+            stroke-linecap: round;
+        }
+        
+        .hand--minute {
+            stroke: var(--pink);
+            stroke-width: 5;
+            transform: rotate(0deg);
+        }
+        
+        .hand--second {
+            transform: rotate(90deg);
+        }
+        
+        .hand--hour {
+            stroke-width: 5;
+            stroke: var(--white);
+            transform: rotate(45deg);
+        }
+        
+        .date {
+            fill: var(--gray);
+            font-size: 6rem;
+            text-shadow: 10px 10px 6px rgba(0, 0, 0, 0.16);
+            font-family: 'Noto Sans KR', sans-serif;
+            /*font-weight: bold;*/
+            font-weight: lighter;
+        }
+        
+        .am-pm {
+            fill: var(--red);
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-shadow: 10px 10px 6px rgba(0, 0, 0, 0.16);
+            font-family: 'Noto Sans KR', sans-serif;
+            /*font-weight: ;*/
+        }
+        
+        .inner {
+            display: inline-block;
+        }
+        
+        .one {
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 6rem;
+            text-align: center;
+            color: #6b3131;
+            text-shadow: 10px 10px 6px rgba(0, 0, 0, 0.16);
+            width: 30%;
+        }
+        
+        .two {
+            width: 40%;
+        }
+        
+        .logo {
+            display: inline;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        
+        .middle {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding-left: 15px;
+            padding-right: 15px;
+            flex-direction: row;
+            align-content: space-between;
+            height: 80%;
+            width: 100%;
+        }
+        
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .first {
+            width: 100%;
+            height: 10%;
+            background: #f5f5f5;
+            border: 1px solid #707070;
+        }
+        
+        .announce {
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 50px;
+            text-align: left;
+            color: #6b3131;
+        }
+        
+        footer {
+            width: 100%;
+            height: 10%;
+        }
+        
+        footer>div {
+            width: 100%;
+            height: 90px;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            /* background-color: rgba(255, 255, 255, 0.15);*/
+            background-color: #f5f5f589;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            border: 1px solid #707070;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navigation ul {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+        
+        .navigation ul li {
+            list-style: none;
+            position: relative;
+            width: 25%;
+            height: 90px;
+            z-index: 2;
+        }
+        
+        .navigation ul li a {
+            position: relative;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+        }
+        
+        .navigation ul li a span p {
+            position: relative;
+            display: block;
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 30px;
+            text-align: left;
+            color: #6b3131;
+            width: 100%;
+            height: 90%;
+            text-align: center;
+            line-height: 90%;
+            transition-delay: 0s;
+            border-radius: 25%;
+        }
+        
+        .navigation ul li.active a span p {
+            transform: translateY(-25px);
+            transition-delay: 0s;
+            color: #232946;
+        }
+        
+        .navigation ul li.active a span p::before {
+            transition-delay: 0.25s;
+            opacity: 0.5;
+        }
+        
+        .navigation ul li a span p::before {
+            content: '';
+            position: absolute;
+            transition: 0.5s;
+            transition-delay: 0s;
+            opacity: 0;
+        }
+        
+        .indicator {
+            position: absolute;
+            top: -20px;
+            width: 25%;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            background-color: rgba(195, 192, 192, 0.827);
+            border: 1px solid #707070;
+            box-shadow: 5px 5px 30px rgb(161, 161, 161);
+            height: 90px;
+            border-radius: 0%;
+            z-index: 1;
+            transition: 0.5;
+        }
+        /*.indicator::before {
+            content: '';
+            position: absolute;
+            top: 17px;
+            left: -8px;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border-radius: 50%;
+            background-color: #fff;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+        }
+        
+        .indicator::after {
+            content: '';
+            position: absolute;
+            top: 17px;
+            left: 360px;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border-radius: 50%;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            background-color: #fff;
+        }*/
+        
+        .navigation ul li:nth-child(1).active~indicator {
+            transform: translateX(calc(100%*0));
+        }
+        
+        .navigation ul li:nth-child(2).active~.indicator {
+            transform: translateX(calc(100%*1));
+        }
+        
+        .navigation ul li:nth-child(3).active~.indicator {
+            transform: translateX(calc(100%*2));
+        }
+        
+        .navigation ul li:nth-child(4).active~.indicator {
+            transform: translateX(calc(100%*3));
+        }
+        
+        .three_logo {
+            background: #f5f5f5;
+            border: 1px solid #707070;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 10%;
+            width: 50%;
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 1em;
+            text-align: left;
+            color: #6b3131;
+        }
+        
+        .three {
+            flex-direction: column;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 25%;
+            height: 500px;
+        }
+        
+        .three_todo {
+            height: 85%;
+            width: 100%;
+            border-radius: 57px;
+            background: #f5f5f5;
+            border: 1px solid #707070;
+            box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.16);
+        }
+    </style>
+
+</head>
+
+<body background="https://images.pexels.com/photos/950241/pexels-photo-950241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+    <div class="first">
+        <p class="announce">※이 사이트는 이주호가 제작한 사이트입니다. ⓒ이주호</p>
+    </div>
+    <div class="middle">
+        <div class="inner one">
+            <p class="logo">OROR</p>
+        </div>
+        <div class="inner two container">
+            <div class="clock--wrapper">
+                <div class="clock">
+                    <svg class="clockface" width="500" heigth="500" viewbox="-250 -250 500 500">
+                        <circle class="ring ring--hours" cx="0" cy="0" r="245"  pathlength="12" />
+                        <circle class="ring ring--seconds" cx="0" cy="0" r="245"  pathlength="60" />
+                        <Text x="100" y="-10"class="date">23</Text>
+                        <text x="100" y="40" class="am-pm">am</text>
+                        <line class="hand hand--minute" x1="0" y1="2" x2="0" y2="-200"/>
+                        <line class="hand hand--hour" x1="0" y1="2" x2="0" y2="-120"/>
+                        <line class="hand hand--second" x1="0" y1="12" x2="0" y2="-230"/>
+                        <circle class="ring ring--center" cx="0" cy="0" r="5"  pathlength="60" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="inner three">
+            <div class="three_logo">
+                <p>할 일</p>
+            </div>
+            <div class="three_todo">
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="navigation">
+            <ul>
+                <li class="list active">
+                    <a href="/">
+                        <span class="icon">
+                            <p>메인페이지</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/graph">
+                        <span class="icon">
+                            <p>그래프 제작</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/introduce">
+                        <span class="icon">
+                            <p>개인 소개</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/ps">
+                        <span class="icon">
+                            <p>PS</p>
+                        </span>
+                    </a>
+                </li>
+                <div class="indicator">
+                </div>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+<script>
+    const UI = {
+        date: document.querySelector('.date'),
+        am_pm: document.querySelector('.am-pm'),
+        second: document.querySelector('.hand--second'),
+        minute: document.querySelector('.hand--minute'),
+        hour: document.querySelector('.hand--hour'),
+    }
+    const list = document.querySelectorAll('.list');
+    list.forEach((item) =>
+        item.addEventListener('mouseover', activeLink))
+
+    function activeLink() {
+        list.forEach((item) =>
+            item.classList.remove('active'));
+        this.classList.add('active');
+    }
+
+    function updateClock() {
+        const now = new Date();
+        const date = now.getDate();
+        UI.date.textContent = date;
+        const seconds = (now.getSeconds() + now.getMilliseconds() / 1000) / 60 * 360;
+        const minutes = (now.getMinutes() + now.getSeconds() / 60) / 60 * 360;
+        const hours = (now.getHours() + now.getMinutes() / 60) / 12 * 360;
+
+        UI.date.textContent = date;
+        UI.am_pm.textContent = (now.getHours() >= 12) ? "pm" : "am";
+        UI.second.style.transform = `rotate(${seconds}deg)`;
+        UI.hour.style.transform = `rotate(${hours}deg)`;
+        UI.minute.style.transform = `rotate(${minutes}deg)`;
+        requestAnimationFrame(updateClock)
+    }
+
+    requestAnimationFrame(updateClock)
+</script>
+
+</html>

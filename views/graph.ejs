@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+         :root {
+            --bkg: #232946;
+            --dark: #121629;
+            --purple: #b8c1ec;
+            --pink: #eebbc3;
+            --white: #fffffe;
+            --white2: #f5f5f5;
+            --red: #6b3131;
+            --gray: #707070;
+        }
+        
+        body {
+            background-color: var(--white);
+            place-items: center;
+            font-size: 2rem;
+            height: 100%;
+        }
+        
+        body {
+            background-size: cover;
+            display: block;
+            align-items: center;
+            background-repeat: no-repeat;
+        }
+        
+        footer {
+            width: 100%;
+            height: 10%;
+        }
+        
+        footer>div {
+            width: 100%;
+            height: 90px;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            /* background-color: rgba(255, 255, 255, 0.15);*/
+            background-color: #f5f5f589;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            border: 1px solid #707070;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navigation ul {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+        
+        .navigation ul li {
+            list-style: none;
+            position: relative;
+            width: 25%;
+            height: 90px;
+            z-index: 2;
+        }
+        
+        .navigation ul li a {
+            position: relative;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+        }
+        
+        .navigation ul li a span p {
+            position: relative;
+            display: block;
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 30px;
+            text-align: left;
+            color: #6b3131;
+            width: 100%;
+            height: 90%;
+            text-align: center;
+            line-height: 90%;
+            transition-delay: 0s;
+            border-radius: 25%;
+        }
+        
+        .navigation ul li.active a span p {
+            transform: translateY(-25px);
+            transition-delay: 0s;
+            color: #232946;
+        }
+        
+        .navigation ul li.active a span p::before {
+            transition-delay: 0.25s;
+            opacity: 0.5;
+        }
+        
+        .navigation ul li a span p::before {
+            content: '';
+            position: absolute;
+            transition: 0.5s;
+            transition-delay: 0s;
+            opacity: 0;
+        }
+        
+        .indicator {
+            position: absolute;
+            top: -20px;
+            width: 25%;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            background-color: rgba(195, 192, 192, 0.827);
+            border: 1px solid #707070;
+            box-shadow: 5px 5px 30px rgb(161, 161, 161);
+            height: 90px;
+            z-index: 1;
+            transition: 0.5;
+        }
+        
+        .navigation ul li:nth-child(1).active~indicator {
+            transform: translateX(calc(100%*0));
+        }
+        
+        .navigation ul li:nth-child(2).active~.indicator {
+            transform: translateX(calc(100%*1));
+        }
+        
+        .navigation ul li:nth-child(3).active~.indicator {
+            transform: translateX(calc(100%*2));
+        }
+        
+        .navigation ul li:nth-child(4).active~.indicator {
+            transform: translateX(calc(100%*3));
+        }
+        
+        section {
+            border-radius: 30px 0px 0px 30px;
+            height: 80vh;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            overflow-y: auto;
+            border: 1px solid #707070;
+            background: transparent;
+            backdrop-filter: blur(26px);
+            --webkit-backdrop-filter: blur(26px);
+            margin: 20px 20px 20px 20px;
+        }
+        
+        section::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        section::-webkit-scrollbar-thumb {
+            border-radius: 20px;
+            background-color: rgb(194, 185, 185);
+        }
+        
+        section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .contain {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .contain>form>div {
+            margin: 10px;
+            height: 150px;
+        }
+        
+        .first_form>div {
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .first_form {
+            align-items: center;
+            width: 90%;
+        }
+        
+        .first_first {
+            height: 50%;
+            width: 50%;
+            float: left;
+        }
+        
+        .form-control {
+            box-shadow: -8px -8px 30px lightslategrey;
+            width: 90%;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .first_second {
+            float: right;
+            border-radius: 15px;
+            height: 100%;
+            width: 50%;
+            box-shadow: 0px 3px 6px rgba(129, 126, 126, 0.444);
+            overflow: hidden;
+            border: 1px solid #707070;
+            background: transparent;
+            backdrop-filter: blur(26px);
+            --webkit-backdrop-filter: blur(26px);
+        }
+        
+        .second_first {
+            width: 45%;
+            height: 90%;
+            float: left;
+        }
+        
+        .second_second {
+            width: 45%;
+            height: 90%;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+        
+        textarea {
+            height: 60%;
+            resize: none;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: -8px -8px 30px lightslategrey;
+        }
+        
+        .choose_file {
+            height: 50%;
+            width: 50%;
+        }
+        
+        .third_first {
+            width: 45%;
+            height: 90%;
+            float: left;
+        }
+        
+        .third_second {
+            width: 45%;
+            height: 90%;
+            float: right;
+        }
+        
+        .sender {
+            font-size: 2rem;
+            margin: 10px;
+            width: 80%;
+            height: 100px;
+        }
+        
+        .out_send {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body background="https://images.pexels.com/photos/2078271/pexels-photo-2078271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+    <section>
+        <div class="contain">
+            <form action="/addgraph" method="post">
+                <div class="first_form">
+                    <div class="first_first">
+                        <label for="floatingtitle"><p>제목</p></label>
+                        <input type="text" class="form-control" name="numbers" id="floatingtitle" placeholder="지을 제목을 정확하게 입력해 주십시오">
+                    </div>
+                    <div class="first_second">
+                        <p>R을 이용해 그래프를 제작합니다(3일 소요)<br> 현재 이 사이트는 Beta버전 이므로 추후에 이용하시기 바랍니다</p>
+                    </div>
+
+                </div>
+                <div class="second_form">
+                    <div class="second_first">
+                        <label for="textarea1"><p>분석할 내용</p></label>
+                        <textarea class="" id="textarea1" name="answer"></textarea>
+                    </div>
+                    <div class="second_second">
+                        <input type="file" class="choose_file" name="file">
+                    </div>
+                </div>
+                <div class="third_form">
+                    <div class="third_first">
+                        <label for="textarea2"><p>이름</p></label>
+                        <textarea class="" id="textarea2" name="testcase"></textarea>
+                    </div>
+                    <div class="third_second">
+                        <label for="textarea2"><p>컬럼</p></label>
+                        <textarea class="" id="textarea2" name="testcase"></textarea>
+                    </div>
+                </div>
+                <hr>
+                <div class="out_send">
+
+                    <button type="submit" class="sender" id="">컬럼</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="navigation">
+            <ul>
+                <li class="list">
+                    <a href="/">
+                        <span class="icon">
+                            <p>메인페이지</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="/graph">
+                        <span class="icon">
+                            <p>그래프 제작</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/introduce">
+                        <span class="icon">
+                            <p>개인 소개</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/ps">
+                        <span class="icon">
+                            <p>PS</p>
+                        </span>
+                    </a>
+                </li>
+                <div class="indicator">
+                </div>
+            </ul>
+        </div>
+    </footer>
+</body>
+<script>
+    const list = document.querySelectorAll('.list');
+    list.forEach((item) =>
+        item.addEventListener('mouseover', activeLink))
+
+    function activeLink() {
+        list.forEach((item) =>
+            item.classList.remove('active'));
+        this.classList.add('active');
+    }
+</script>
+
+</html>

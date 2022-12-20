@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+         :root {
+            --bkg: #232946;
+            --dark: #121629;
+            --purple: #b8c1ec;
+            --pink: #eebbc3;
+            --white: #fffffe;
+            --white2: #f5f5f5;
+            --red: #6b3131;
+            --gray: #707070;
+        }
+        
+        body {
+            background-color: var(--white);
+            place-items: center;
+            font-size: 2rem;
+            height: 100%;
+        }
+        
+        body {
+            background-size: cover;
+            display: block;
+            align-items: center;
+            background-repeat: no-repeat;
+        }
+        
+        footer {
+            width: 100%;
+            height: 10%;
+        }
+        
+        footer>div {
+            width: 100%;
+            height: 90px;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            /* background-color: rgba(255, 255, 255, 0.15);*/
+            background-color: #f5f5f589;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            border: 1px solid #707070;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navigation ul {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+        
+        .navigation ul li {
+            list-style: none;
+            position: relative;
+            width: 25%;
+            height: 90px;
+            z-index: 2;
+        }
+        
+        .navigation ul li a {
+            position: relative;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+        }
+        
+        .navigation ul li a span p {
+            position: relative;
+            display: block;
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 30px;
+            text-align: left;
+            color: #6b3131;
+            width: 100%;
+            height: 90%;
+            text-align: center;
+            line-height: 90%;
+            transition-delay: 0s;
+            border-radius: 25%;
+        }
+        
+        .navigation ul li.active a span p {
+            transform: translateY(-25px);
+            transition-delay: 0s;
+            color: #232946;
+        }
+        
+        .navigation ul li.active a span p::before {
+            transition-delay: 0.25s;
+            opacity: 0.5;
+        }
+        
+        .navigation ul li a span p::before {
+            content: '';
+            position: absolute;
+            transition: 0.5s;
+            transition-delay: 0s;
+            opacity: 0;
+        }
+        
+        .indicator {
+            position: absolute;
+            top: -20px;
+            width: 25%;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            --webkit-backdrop-filter: blur(30px);
+            background-color: rgba(195, 192, 192, 0.827);
+            border: 1px solid #707070;
+            box-shadow: 5px 5px 30px rgb(161, 161, 161);
+            height: 90px;
+            z-index: 1;
+            transition: 0.5;
+        }
+        
+        .navigation ul li:nth-child(1).active~indicator {
+            transform: translateX(calc(100%*0));
+        }
+        
+        .navigation ul li:nth-child(2).active~.indicator {
+            transform: translateX(calc(100%*1));
+        }
+        
+        .navigation ul li:nth-child(3).active~.indicator {
+            transform: translateX(calc(100%*2));
+        }
+        
+        .navigation ul li:nth-child(4).active~.indicator {
+            transform: translateX(calc(100%*3));
+        }
+        
+        section {
+            display: flex;
+            height: 80vh;
+            overflow-y: auto;
+            background: transparent;
+            margin: 20px 20px 20px 20px;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        section::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        section::-webkit-scrollbar-thumb {
+            border-radius: 20px;
+            background-color: rgb(194, 185, 185);
+        }
+        
+        section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .myfirst {
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 4rem;
+            text-align: left;
+            color: #4c8cc3;
+            text-shadow: 10px 10px 6px rgba(0, 0, 0, 0.16);
+        }
+        
+        .first {
+            display: flex;
+            width: 95%;
+            height: 50%;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+        }
+        
+        .first_first {
+            width: 50%;
+            height: 100%;
+        }
+        
+        .first_second {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+            height: 100%;
+            font-size: 0.95em;
+            border-radius: 20px;
+            background: #fff;
+            border: 1px solid #707070;
+            overflow: hidden;
+        }
+        
+        .mail1 {
+            color: #6b3131;
+        }
+        
+        .mail2 {
+            color: steelblue;
+        }
+        
+        .phonenumber {
+            color: blue;
+        }
+        
+        .boj {
+            color: #43c7af;
+        }
+        
+        .atcoder {
+            color: gray;
+        }
+        
+        .codeforces {
+            color: gray;
+        }
+        
+        .mysecond {
+            font-weight: bolder;
+        }
+        
+        .second {
+            height: 30%;
+            width: 95%;
+            background: #fff;
+            border: 1px solid #707070;
+            display: flex;
+            overflow: auto;
+            justify-content: space-around;
+        }
+        
+        .second>div {
+            margin: 5px;
+        }
+        
+        #sname {
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            font-size: 1em;
+            text-align: left;
+            color: #a3a5a2;
+        }
+        
+        .second p {
+            font-family: "Noto Sans KR";
+            font-weight: bold;
+            text-align: left;
+            color: #000;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body background="https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+    <section>
+        <div class="first">
+            <div class="first_first">
+                <p class="myfirst">
+                    SIHS <br> 이주호 <br> DORAEMON0903
+                </p>
+            </div>
+            <div class="first_second">
+                <p class="mysecond">
+                    <span class="mail1">개인 메일 : yhg3669002@gmail.com</span> <br><span class="mail2">학교 메일 : 22sunrin100@sunrint.hs.kr</span> <br> <span class="phonenumber"> 전화 번호 : 010-4671-7363 </span><br><span class="boj"> <a href="https://www.acmicpc.net/user/doraemon0903">Boj : doraemon0903 - P5</a></span>                    <br> <span class="codeforces"> <a href="https://codeforces.com/profile/doraemon0903">Codeforces : doraemon0903
+                    - Newbie</a></span> <br> <span class="atcoder"><a href="https://atcoder.jp/users/Semia">Atcoder : semia - 14kyu</a> </span>
+                </p>
+            </div>
+        </div>
+        <div class="second">
+            <div class="second_first">
+                <p id="sname">경력</p>
+                <p>AOROR 22-9월 제작 서비스 중 <br> OROR 22-10월 제작 서비스 중</p>
+            </div>
+            <div class="second_second">
+                <p>~18 : 목동초등학교 졸업 <br> ~21 : 목동중학교 졸업 <br> 22~ : 선린인고 재학중</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="navigation">
+            <ul>
+                <li class="list">
+                    <a href="/">
+                        <span class="icon">
+                            <p>메인페이지</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/graph">
+                        <span class="icon">
+                            <p>그래프 제작</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="/introduce">
+                        <span class="icon">
+                            <p>개인 소개</p>
+                        </span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/ps">
+                        <span class="icon">
+                            <p>PS</p>
+                        </span>
+                    </a>
+                </li>
+                <div class="indicator">
+                </div>
+            </ul>
+        </div>
+    </footer>
+
+
+</body>
+<script>
+    const list = document.querySelectorAll('.list');
+    list.forEach((item) =>
+        item.addEventListener('mouseover', activeLink))
+
+    function activeLink() {
+        list.forEach((item) =>
+            item.classList.remove('active'));
+        this.classList.add('active');
+    }
+</script>
+
+</html>
